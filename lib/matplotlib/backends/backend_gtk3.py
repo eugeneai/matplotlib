@@ -21,7 +21,7 @@ except ValueError:
         "to be installed.")
 
 try:
-    from gi.repository import Gtk, Gdk, GObject
+    from gi.repository import Gtk, Gdk, GObject, GLib
 except ImportError:
     raise ImportError("Gtk3 backend requires pygobject to be installed.")
 
@@ -325,7 +325,7 @@ class FigureCanvasGTK3 (Gtk.DrawingArea, FigureCanvasBase):
             self._idle_draw_id = 0
             return False
         if self._idle_draw_id == 0:
-            self._idle_draw_id = GObject.idle_add(idle_draw)
+            self._idle_draw_id = GLib.idle_add(idle_draw)
 
     def new_timer(self, *args, **kwargs):
         """
